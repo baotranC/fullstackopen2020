@@ -1,10 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-//Header takes care of rendering the name of the course, 
-//Content renders the parts and their number of exercises and 
-//Total renders the total number of exercises.
-
 const Header = (props) => {
   return (
     <h1>{props.name}</h1>
@@ -12,6 +8,16 @@ const Header = (props) => {
 }
 
 const Content = (props) => {
+  return (
+    <div>
+        <Part part={props.part1} exercice={props.exercises1} />
+        <Part part={props.part2} exercice={props.exercises2} />
+        <Part part={props.part3} exercice={props.exercises3} />
+    </div>
+  )
+}
+
+const Part = (props) => {
   return (
     <p> {props.part} {props.exercise} </p>
   )
@@ -36,9 +42,9 @@ const App = () => {
     <div>
       <Header name={course}/>
 
-      <Content part={part1} exercice={exercises1}/>
-      <Content part={part2} exercice={exercises2}/>
-      <Content part={part3} exercice={exercises3}/>
+      <Content part1={part1} exercice1={exercises1}/>
+      <Content part2={part2} exercice2={exercises2}/>
+      <Content part3={part3} exercice3={exercises3}/>
 
       <Total nbEx1={exercises1} nbEx2={exercises2} nbEx13={exercises3} />
     </div>
