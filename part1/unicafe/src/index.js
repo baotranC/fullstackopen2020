@@ -9,7 +9,7 @@ const Header = ({value}) => (
   <h1>{value}</h1>
 )
 
-const Display = ({text, value})=>(
+const Statistic = ({text, value})=>(
 <div>{text} {value}</div>
 )
 
@@ -50,20 +50,18 @@ const Statistics = ({good, neutral, bad, allClicks}) => {
   if(allClicks.length === 0){
     return (
       <div>
-        <Header value = 'statistics'/>
         <div>No feedback given</div>
       </div>)
   }
 
   return (
     <div>
-      <Header value = 'statistics'/>
-      <Display text='good' value={good}/>
-      <Display text='neutral' value={neutral}/>
-      <Display text='bad' value={bad}/>  
-      <Display text='all' value={sum()}/>
-      <Display text='average' value={average()}/>
-      <Display text='positive' value={percentPositive()+' %'}/>
+      <Statistic text='good' value={good}/>
+      <Statistic text='neutral' value={neutral}/>
+      <Statistic text='bad' value={bad}/>  
+      <Statistic text='all' value={sum()}/>
+      <Statistic text='average' value={average()}/>
+      <Statistic text='positive' value={percentPositive()+' %'}/>
     </div>
   )
 }
@@ -109,6 +107,7 @@ const App = () => {
         <Button onClick={handleGoodClick} text={'good'}></Button>
         <Button onClick={handleNeutralClick} text={'neutral'}></Button>
         <Button onClick={handleBadClick} text={'bad'}></Button>
+        <Header value = 'statistics'/>
         <Statistics good={good} neutral={neutral} bad={bad} allClicks={allClicks}/>
       </div>
     </div>
