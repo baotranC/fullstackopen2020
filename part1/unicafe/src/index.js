@@ -13,24 +13,7 @@ const Display = ({text, value})=>(
 <div>{text} {value}</div>
 )
 
-const App = () => {
-  // save clicks of each button to own state
-  const [good, setGood] = useState(0)
-  const [neutral, setNeutral] = useState(0)
-  const [bad, setBad] = useState(0)
-
-  const handleGoodClick = () => {
-    setGood(good + 1)
-  } 
-
-  const handleNeutralClick = () => {
-    setNeutral(neutral + 1)
-  }
-
-  const handleBadClick = () => {
-    setBad(bad + 1)
-  }
-
+const Statistics = ({good, neutral, bad}) => {
   const sum = () => {
     const sum = good + neutral + bad
 
@@ -52,7 +35,7 @@ const App = () => {
   }
 
   const percentPositive = () => {
-    let percentPositive = (good * 1) / (sum())
+    let percentPositive = (good * 1) / (sum()) * 100
 
     // This can only be true if the value is NaN
     if(percentPositive !== percentPositive){
@@ -65,20 +48,43 @@ const App = () => {
 
   return (
     <div>
+      <Header value = 'statistics'/>
+      <Display text='good' value={good}/>
+      <Display text='neutral' value={neutral}/>
+      <Display text='bad' value={bad}/>  
+      <Display text='all' value={sum()}/>
+      <Display text='average' value={average()}/>
+      <Display text='positive' value={percentPositive()+' %'}/>
+    </div>
+  )
+}
+
+const App = () => {
+  // save clicks of each button to own state
+  const [good, setGood] = useState(0)
+  const [neutral, setNeutral] = useState(0)
+  const [bad, setBad] = useState(0)
+
+  const handleGoodClick = () => {
+    setGood(good + 1)
+  } 
+
+  const handleNeutralClick = () => {
+    setNeutral(neutral + 1)
+  }
+
+  const handleBadClick = () => {
+    setBad(bad + 1)
+  }
+
+  return (
+    <div>
       <div>
         <Header value = 'give feedback'/>
         <Button onClick={handleGoodClick} text={'good'}></Button>
         <Button onClick={handleNeutralClick} text={'neutral'}></Button>
         <Button onClick={handleBadClick} text={'bad'}></Button>
-      </div>
-      <div>
-        <Header value = 'statistics'/>
-        <Display text='good' value={good}/>
-        <Display text='neutral' value={neutral}/>
-        <Display text='bad' value={bad}/>
-        <Display text='all' value={sum()}/>
-        <Display text='average' value={average()}/>
-        <Display text='positive' value={percentPositive()+' %'}/>
+        <Statistics good={good} neutral={neutral} bad={bad}/>
       </div>
     </div>
   )
