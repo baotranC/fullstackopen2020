@@ -25,8 +25,7 @@ const Statistics = ({good, neutral, bad, allClicks}) => {
   const average = () => {
     let average = (good * 1 + neutral * 0 + bad * -1)/ (sum())
       
-    // This can only be true if the value is NaN
-    if(average !== average){
+    if(isNaN(average)){
       average = 0
     }
     return (
@@ -37,8 +36,7 @@ const Statistics = ({good, neutral, bad, allClicks}) => {
   const percentPositive = () => {
     let percentPositive = (good * 1) / (sum()) * 100
 
-    // This can only be true if the value is NaN
-    if(percentPositive !== percentPositive){
+    if(isNaN(percentPositive)){
       percentPositive = 0
     }
     return (
@@ -46,7 +44,6 @@ const Statistics = ({good, neutral, bad, allClicks}) => {
     )
   }
 
-  
   if(allClicks.length === 0){
     return (
       <div>
@@ -65,18 +62,6 @@ const Statistics = ({good, neutral, bad, allClicks}) => {
     </div>
   )
 }
-
-// const History = ({allClicks}) => {
-//   if(allClicks.length === 0){
-//     return (
-//       <div>No feedback given</div>
-//     )
-//   }
-//   return (
-//     <div/>
-//   )
-// }
-
 
 const App = () => {
   // save clicks of each button to own state
