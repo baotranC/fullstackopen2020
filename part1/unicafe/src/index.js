@@ -31,6 +31,38 @@ const App = () => {
     setBad(bad + 1)
   }
 
+  const sum = () => {
+    const sum = good + neutral + bad
+
+    return (
+      sum
+    )
+  }
+
+  const average = () => {
+    let average = (good * 1 + neutral * 0 + bad * -1)/ (sum())
+      
+    // This can only be true if the value is NaN
+    if(average !== average){
+      average = 0
+    }
+    return (
+      average
+    )
+  }
+
+  const percentPositive = () => {
+    let percentPositive = (good * 1) / (sum())
+
+    // This can only be true if the value is NaN
+    if(percentPositive !== percentPositive){
+      percentPositive = 0
+    }
+    return (
+      percentPositive
+    )
+  }
+
   return (
     <div>
       <div>
@@ -44,6 +76,9 @@ const App = () => {
         <Display text='good' value={good}/>
         <Display text='neutral' value={neutral}/>
         <Display text='bad' value={bad}/>
+        <Display text='all' value={sum()}/>
+        <Display text='average' value={average()}/>
+        <Display text='positive' value={percentPositive()+' %'}/>
       </div>
     </div>
   )
