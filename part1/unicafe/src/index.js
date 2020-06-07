@@ -13,7 +13,7 @@ const Display = ({text, value})=>(
 <div>{text} {value}</div>
 )
 
-const Statistics = ({good, neutral, bad}) => {
+const Statistics = ({good, neutral, bad, allClicks}) => {
   const sum = () => {
     const sum = good + neutral + bad
 
@@ -46,6 +46,15 @@ const Statistics = ({good, neutral, bad}) => {
     )
   }
 
+  
+  if(allClicks.length === 0){
+    return (
+      <div>
+        <Header value = 'statistics'/>
+        <div>No feedback given</div>
+      </div>)
+  }
+
   return (
     <div>
       <Header value = 'statistics'/>
@@ -59,21 +68,37 @@ const Statistics = ({good, neutral, bad}) => {
   )
 }
 
+// const History = ({allClicks}) => {
+//   if(allClicks.length === 0){
+//     return (
+//       <div>No feedback given</div>
+//     )
+//   }
+//   return (
+//     <div/>
+//   )
+// }
+
+
 const App = () => {
   // save clicks of each button to own state
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
+  const [allClicks, setAll] = useState([])
 
   const handleGoodClick = () => {
+    setAll(allClicks.concat('G'))
     setGood(good + 1)
   } 
 
   const handleNeutralClick = () => {
+    setAll(allClicks.concat('N'))
     setNeutral(neutral + 1)
   }
 
   const handleBadClick = () => {
+    setAll(allClicks.concat('B'))
     setBad(bad + 1)
   }
 
@@ -84,7 +109,7 @@ const App = () => {
         <Button onClick={handleGoodClick} text={'good'}></Button>
         <Button onClick={handleNeutralClick} text={'neutral'}></Button>
         <Button onClick={handleBadClick} text={'bad'}></Button>
-        <Statistics good={good} neutral={neutral} bad={bad}/>
+        <Statistics good={good} neutral={neutral} bad={bad} allClicks={allClicks}/>
       </div>
     </div>
   )
