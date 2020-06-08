@@ -1,3 +1,5 @@
-# Part 1: Introduction to React, anecdotes
+# fullstackopen2020
 
-The application generates random anecdotes from the field of software engineering when a button is clicked
+This project is implemented by following the web development course with JavaScript: https://fullstackopen.com/.
+
+The course mainly focuses on single page applications implemented with React which use REST APIs built in Node.js. Redux, MongoDB, GraphQL and TypeScript technologies will also be used.
