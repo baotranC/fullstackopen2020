@@ -25,13 +25,13 @@ const App = ({anecdotes}) => {
   const handleVoteClick = () => {
     const copy = [...points]
     copy[selected] += 1
-
+    
     setPoints(copy)
-    indexMax(points)
+    indexMax(copy)
   } 
 
-  const indexMax = () => {
-    const maxIndex = points.indexOf(Math.max(...points));
+  const indexMax = (copy) => {
+    const maxIndex = copy.indexOf(Math.max(...copy));
     
     setIndiceMaxPoints(maxIndex)
   }
