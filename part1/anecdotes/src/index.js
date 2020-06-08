@@ -13,35 +13,48 @@ const Anecdote = ({anecdotes, points}) => (
 )
 
 const App = ({anecdotes}) => {
-  const [selected, setSelected] = useState(0)
-  const [points, setPoints] = useState([0, 0, 0, 0, 0, 0])
-  const [indexMaxPoints, setIndiceMaxPoints] = useState(0)
+  const [state, setState] = useState({
+    selected: 0,
+    points: [0, 0, 0, 0, 0, 0],
+    indexMaxPoints: 0
+  })
 
   const handleAnecdoteClick = () => {
     const random = Math.floor(Math.random() * anecdotes.length);
-    setSelected(random)
+    
+    const newState = {
+      ...state,
+      selected: random
+    }
+    setState(newState)
   }
 
   const handleVoteClick = () => {
-    const copy = [...points]
-    copy[selected] += 1
-    
-    setPoints(copy)
-    indexMax(copy)
-  } 
+    const copy = [...state.points]
+    copy[state.selected] += 1
 
-  const indexMax = (copy) => {
-    const maxIndex = copy.indexOf(Math.max(...copy));
-    
-    setIndiceMaxPoints(maxIndex)
-  }
+    let indexMax = state.indexMaxPoints
+    const oldMaxVote = state.points[indexMax]
+    const currentVote = copy[state.selected]
+
+    if (currentVote > oldMaxVote){
+      indexMax = state.selected
+    }
+
+    const newState = {
+      ...state,
+      points: copy,
+      indexMaxPoints: indexMax
+    }
+    setState(newState)
+  } 
 
   return (
     <div>
-      <Anecdote anecdotes={anecdotes[selected]} points={points[selected]}/> 
+      <Anecdote anecdotes={anecdotes[state.selected]} points={state.points[state.selected]}/> 
       <Button onClick={handleVoteClick} text = 'vote'/>
       <Button onClick={handleAnecdoteClick} text='next anecdote'/>
-      <Anecdote anecdotes={anecdotes[indexMaxPoints]} points={points[indexMaxPoints]}/> 
+      <Anecdote anecdotes={anecdotes[state.indexMaxPoints]} points={state.points[state.indexMaxPoints]}/> 
     </div>
   ) 
 }
