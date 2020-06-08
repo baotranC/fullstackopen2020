@@ -4,6 +4,4 @@ This application is used to collect feedback from customers of a coffee shop. Co
 
 Here are the additional concepts that have been put into practice:
 
-Destructing 
-Stateful component
-Event handling
+Destructing. Stateful component. Event handling.
