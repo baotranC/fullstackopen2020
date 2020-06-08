@@ -12,7 +12,7 @@ const App = (props) => {
     <div>
       {props.anecdotes[selected]}
     </div>
-  )
+  ) 
 }
 
 const anecdotes = [
