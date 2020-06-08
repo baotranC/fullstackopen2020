@@ -26,8 +26,8 @@ const App = ({anecdotes}) => {
       ...state,
       selected: random
     }
-    setState(newState)
-  }
+      setState(newState)
+    }
 
   const handleVoteClick = () => {
     const copy = [...state.points]
