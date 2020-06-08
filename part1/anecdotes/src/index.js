@@ -5,9 +5,17 @@ const Button = ({onClick, text}) => (
   <button onClick={onClick}>{text}</button>
 )
 
-const App = (props) => {
+const Anecdote = ({anecdotes, points}) => (
+  <div>
+    <h3>{anecdotes}</h3>
+    <h3>has {points} votes</h3>
+  </div>
+)
+
+const App = ({anecdotes}) => {
   const [selected, setSelected] = useState(0)
   const [points, setPoints] = useState([0, 0, 0, 0, 0, 0])
+  const [indexMaxPoints, setIndiceMaxPoints] = useState(0)
 
   const handleAnecdoteClick = () => {
     const random = Math.floor(Math.random() * anecdotes.length);
@@ -17,16 +25,23 @@ const App = (props) => {
   const handleVoteClick = () => {
     const copy = [...points]
     copy[selected] += 1
+
     setPoints(copy)
+    indexMax(points)
   } 
+
+  const indexMax = () => {
+    const maxIndex = points.indexOf(Math.max(...points));
+    
+    setIndiceMaxPoints(maxIndex)
+  }
 
   return (
     <div>
-      <h3>{props.anecdotes[selected]}</h3>
-      <h3>has {points[selected]} votes</h3>
-      
+      <Anecdote anecdotes={anecdotes[selected]} points={points[selected]}/> 
       <Button onClick={handleVoteClick} text = 'vote'/>
       <Button onClick={handleAnecdoteClick} text='next anecdote'/>
+      <Anecdote anecdotes={anecdotes[indexMaxPoints]} points={points[indexMaxPoints]}/> 
     </div>
   ) 
 }
