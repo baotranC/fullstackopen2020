@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import Filter from './components/Filter'
+import PersonForm from './components/PersonForm'
+import Person from './components/Person'
 
 const App = () => {
   const [ persons, setPersons ] = useState([
@@ -30,69 +33,38 @@ const App = () => {
         name: newContactName,
         number: newContactNumber
       }
-      
+
       setPersons(persons.concat(person))
       setNewName('')
     }
   }
 
   const handleNameChange = (event) => {
-    console.log(event.target.value)
+    // console.log(event.target.value)
     setNewName(event.target.value)
   }
 
   const handleNumberChange = (event) => {
-    console.log(event.target.value)
+    // console.log(event.target.value)
     setNewNumber(event.target.value)
   }
 
   const handleFilterChange = (event) => {
     const filter = event.target.value
-
-    console.log(filter)
+    // console.log(filter)
     setNewFilter(filter)
   }
 
   return (
     <div>
       <h2>Phonebook</h2>
-      
-      <form>
-        <div>
-            filter shown with:
-            <input 
-              value={newFilter} 
-              onChange = {handleFilterChange}  
-            />
-          </div>
-      </form>
-
+      <Filter newFilter={newFilter} handleFilterChange={handleFilterChange} />
+    
       <h2>add a new</h2>
-      <form onSubmit={addContact}>
-        <div>
-          name: 
-          <input 
-            value={newName} 
-            onChange = {handleNameChange}  
-          />
-        </div>
+      <PersonForm addContact={addContact} newName={newName} handleNameChange={handleNameChange} newNumber={newNumber} handleNumberChange={handleNumberChange} />
 
-        <div>
-          number: 
-          <input 
-            value={newNumber} 
-            onChange = {handleNumberChange}  
-          />
-        </div>
-
-        <div>
-          <button type="submit">add</button>
-        </div>
-      </form>
       <h2>Numbers</h2>
-      <ul>
-        {contactToShow.map(person => <li key={person.name}>{person.name}: {person.number}</li>)}
-      </ul>
+      <Person contactToShow={contactToShow}/>
     </div>
   )
 }
