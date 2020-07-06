@@ -4,7 +4,8 @@ import './index.css'
 import PersonForm from './components/PersonForm'
 import Persons from './components/Persons'
 import Filter from './components/Filter'
-import Notification from './components/Notification'
+import GoodNotification from './components/GoodNotification'
+import ErrorNotification from './components/ErrorNotification'
 
 import personService from './services/persons'
 
@@ -14,6 +15,7 @@ const App = () => {
   const [ newNumber, setNewNumber ] = useState('')
   const [ newFilter, setNewFilter ] = useState('')
   const [ successMessage, setSuccessMessage ] = useState(null)
+  const [ errorMessage, setErrorMessage ] = useState(null)
 
   useEffect(() => {
     personService.getAll().then(initialPersons => {
@@ -58,17 +60,21 @@ const App = () => {
           setNewName('')
           setNewNumber('')
          })
+         .catch(error => {
+          setErrorMessage(`Information of ${personInPhonebook.name} has already been removed from server`)
+          setTimeout(() => setErrorMessage(null), 5000)
+
+          setPersons(persons.filter(person => person.id !== personInPhonebook.id))
+         })
       }
     } else {
       personService
       .create(person)
       .then(returnedPerson => {
+        setPersons(persons.concat(returnedPerson))
 
         setSuccessMessage(`Added ${returnedPerson.name}`)
         setTimeout(() => setSuccessMessage(null), 5000)
-
-
-        setPersons(persons.concat(returnedPerson))
 
         setNewName('')
         setNewNumber('')
@@ -104,7 +110,8 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
-      <Notification message={successMessage}/>
+      <GoodNotification message={successMessage}/>
+      <ErrorNotification message={errorMessage}/>
       <Filter newFilter={newFilter} handleFilterChange={handleFilterChange} />
     
       <h2>add a new</h2>
