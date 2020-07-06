@@ -19,7 +19,10 @@ const App = () => {
   }
   
   const countriesToShow = countries.filter(country =>country.name.toLowerCase().includes(newFilter.trim().toLowerCase()))
-  
+  const toggleShow = (countryName) => {
+    setNewFilter(countryName)
+  }
+
   return (
     <div>
       <form>
@@ -30,7 +33,7 @@ const App = () => {
         />
       </div>
       </form>
-      <DisplayCountries countriesToShow = {countriesToShow} />
+      <DisplayCountries countriesToShow = {countriesToShow} toggleShow = {toggleShow} />
     </div>
   )
 }

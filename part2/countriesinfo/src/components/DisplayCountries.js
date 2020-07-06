@@ -1,7 +1,7 @@
 import React from 'react'
 import DisplayCountry from './DisplayCountry'
 
-const DisplayCountries = ({countriesToShow}) => {
+const DisplayCountries = ({countriesToShow, toggleShow}) => {
 
     const lenCountries = countriesToShow.length 
     if(lenCountries > 10){
@@ -11,7 +11,7 @@ const DisplayCountries = ({countriesToShow}) => {
         return(
             <ul>
                 {countriesToShow.map(country => <li key={country.alpha2Code}>{country.name} 
-                <button>show</button> </li>)}
+                <button onClick={() => toggleShow(country.name)}>show</button> </li>)}
             </ul>
         )
     } else if (lenCountries === 1){
