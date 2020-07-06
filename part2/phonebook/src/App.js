@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Filter from './components/Filter'
 import PersonForm from './components/PersonForm'
-import Person from './components/Person'
+import Persons from './components/Persons'
 
 import personService from './services/persons'
 
@@ -19,7 +19,7 @@ const App = () => {
 
   const personsToShow = (newFilter.trim() === '') ? persons : persons.filter(person => person.name.toLowerCase().includes(newFilter.trim().toLowerCase())) 
 
-  
+
   /* Longer version
     const hook = () => {
     const eventHandler = response => {
@@ -71,6 +71,18 @@ const App = () => {
     setNewFilter(filter)
   }
 
+  const removePerson = (id) => {
+    const personToRemove = persons.find(person => person.id === id)
+
+    if (window.confirm(`Delete ${personToRemove.name}?`)) { 
+      personService
+      .remove(id)
+      .then(response => {
+        setPersons(persons.filter(person => person.id !== id))
+       })
+    }
+  }
+
   return (
     <div>
       <h2>Phonebook</h2>
@@ -80,7 +92,7 @@ const App = () => {
       <PersonForm addPerson={addPerson} newName={newName} handleNameChange={handleNameChange} newNumber={newNumber} handleNumberChange={handleNumberChange} />
 
       <h2>Numbers</h2>
-      <Person personsToShow={personsToShow}/>
+      <Persons personsToShow={personsToShow} removePerson={removePerson}/>
     </div>
   )
 }
