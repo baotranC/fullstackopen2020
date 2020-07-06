@@ -34,20 +34,29 @@ const App = () => {
     event.preventDefault()
 
     const newPersonName = newName.trim()
-    const isPersonInPhonebook = persons.find(person => (person.name === newPersonName)) ? true : false
-    
+    const personInPhonebook = persons.find(person => (person.name === newPersonName))
     const newPersonNumber = newNumber.trim()
 
-    if(isPersonInPhonebook){
-      alert(`${newPersonName} is already added to phonebook`)
-    } else if(newPersonName === '' || newPersonNumber === ''){
+    const person = {
+      name: newPersonName,
+      number: newPersonNumber
+    }
+
+    if(newPersonName === '' || newPersonNumber === ''){
       alert(`One of the fields is missing`)
-    } else {
-      const person = {
-        name: newPersonName,
-        number: newPersonNumber
+    } 
+    else if(personInPhonebook){
+      if (window.confirm(`${personInPhonebook.name} is already added to phonebook, replace the old number with a new one?`)) { 
+        personService
+        .update(personInPhonebook.id, person)
+        .then(returnedPerson => {
+          setPersons(persons.map(person => person.id !== personInPhonebook.id ? person : returnedPerson))
+          setNewName('')
+          setNewNumber('')
+         })
       }
 
+    } else {
       personService
       .create(person)
       .then(returnedPerson => {
@@ -77,7 +86,7 @@ const App = () => {
     if (window.confirm(`Delete ${personToRemove.name}?`)) { 
       personService
       .remove(id)
-      .then(response => {
+      .then(() => {
         setPersons(persons.filter(person => person.id !== id))
        })
     }
