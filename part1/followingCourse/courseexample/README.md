@@ -2,9 +2,11 @@
 
 This application was obtained by following the examples in part 1 of sections a)Introduction to React, b)JavaScript and c)Component state, event handlers.
 
+## following course
+
 ![](/part1/images/P1_EX_courseexample.JPG)
 
-### `npm start`
-
+## Run 
+- `npm start`
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.

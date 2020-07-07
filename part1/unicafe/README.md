@@ -6,9 +6,11 @@ Here are the additional concepts that have been put into practice:
 
 Destructing. Stateful component. Event handling.
 
+## unicafe
+
 ![](/part1/images/P1_EX_unicafe.JPG)
 
-### `npm start`
-
+## Run 
+- `npm start`
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.

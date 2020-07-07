@@ -7,7 +7,7 @@
 - Adding styles to React app
 
 
-This section contains the following projects: 
+## This section contains the following projects: 
 - courseinfo
 - phonebook
 - countriesinfo

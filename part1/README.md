@@ -6,7 +6,7 @@
 - A more complex state, debugging React apps
 
 
-This section contains the following projects: 
+## This section contains the following projects: 
 - courseinfo
 - unicafe
 - anecdotes

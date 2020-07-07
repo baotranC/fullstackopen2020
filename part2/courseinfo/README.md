@@ -2,9 +2,11 @@
 
 This application displays the information of multiple courses. More precisely, the name of the section and the number of exercises.
 
+## courseinfo
+
 ![](/part2/images/P2_EX_courseinfo.JPG)
 
-### `npm start`
-
+## Run 
+- `npm start`
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
