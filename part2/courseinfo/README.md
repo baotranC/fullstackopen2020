@@ -3,8 +3,7 @@
 This application displays the information of multiple courses. More precisely, the name of the section and the number of exercises.
 
 ## courseinfo
-
-![](/part2/images/P2_EX_courseinfo.JPG)
+    ![](/part2/images/P2_EX_courseinfo.JPG)
 
 ## Run 
 - `npm start`

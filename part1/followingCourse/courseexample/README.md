@@ -3,8 +3,7 @@
 This application was obtained by following the examples in part 1 of sections a)Introduction to React, b)JavaScript and c)Component state, event handlers.
 
 ## following course
-
-![](/part1/images/P1_EX_courseexample.JPG)
+    ![](/part1/images/P1_EX_courseexample.JPG)
 
 ## Run 
 - `npm start`

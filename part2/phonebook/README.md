@@ -3,7 +3,6 @@
 This application allows you to manage a phonebook: addition, modification, deletion and filter of a contact.
 
 ## phonebook
-
 - Add new person
 
     ![](/part2/images/P2_EX_phonebook.JPG)

@@ -3,8 +3,7 @@
 This application which allows you to add and view notes is obtained by following the examples in part 2.
 
 ## following course
-
-![](/part2/images/P2_EX_courseexample.JPG)
+    ![](/part2/images/P2_EX_courseexample.JPG)
 
 ## Run 
 - `npm start`

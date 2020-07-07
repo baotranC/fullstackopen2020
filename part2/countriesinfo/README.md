@@ -3,7 +3,6 @@
 This application allows you to search various countries. The country to be shown is found by typing a search query into the search field.
 
 ## countriesinfo
-
 - If there are too many (over 10) countries that match the query, then the user is prompted to make their query more specific:
 
     ![](/part2/images/P2_EX_countriesinfo.JPG)

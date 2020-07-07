@@ -10,8 +10,7 @@ Data transmission to components.
 Use of variables, arrays and objects.
 
 ## courseinfo
-
-![](/part1/images/P1_EX_courseinfo.JPG)
+    ![](/part1/images/P1_EX_courseinfo.JPG)
 
 ## Run 
 - `npm start`
