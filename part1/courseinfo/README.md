@@ -8,3 +8,10 @@ Installation of a new application with create-react-app.
 Separation of code into React components.
 Data transmission to components.
 Use of variables, arrays and objects.
+
+![](/part1/images/P1_EX_courseinfo.JPG)
+
+### `npm start`
+
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
