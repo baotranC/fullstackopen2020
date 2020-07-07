@@ -4,7 +4,7 @@ This application displays the information of multiple courses. More precisely, t
 
 ## courseinfo
     
-    ![](/part2/images/P2_EX_courseinfo.JPG)
+![](/part2/images/P2_EX_courseinfo.JPG)
 
 ## Run 
 - `npm start`

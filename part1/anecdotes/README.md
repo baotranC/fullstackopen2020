@@ -3,7 +3,8 @@
 The application generates random anecdotes from the field of software engineering when a button is clicked
 
 ## anecdotes
-    ![](/part1/images/P1_EX_anecdotes.JPG)
+
+![](/part1/images/P1_EX_anecdotes.JPG)
 
 ## Run 
 - `npm start`

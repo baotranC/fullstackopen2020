@@ -7,7 +7,8 @@ Here are the additional concepts that have been put into practice:
 Destructing. Stateful component. Event handling.
 
 ## unicafe
-    ![](/part1/images/P1_EX_unicafe.JPG)
+
+![](/part1/images/P1_EX_unicafe.JPG)
 
 ## Run 
 - `npm start`
